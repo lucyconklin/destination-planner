@@ -28,12 +28,12 @@ describe 'As a User when I visit "/" and click on a destination' do
       expect(page).to have_content('10 Day Weather Forecast')
       expect(page).to have_selector('.day', count: 10)
       within first('.day') do
-        expect(page).to have_content('weekday')
-        expect(page).to have_content('month')
-        expect(page).to have_content('day')
-        expect(page).to have_content('high temp')
-        expect(page).to have_content('low temp')
-        expect(page).to have_content('weather conditions')
+        expect(page).to have_content('Tuesday')
+        expect(page).to have_content('February')
+        expect(page).to have_content('21')
+        expect(page).to have_content('74')
+        expect(page).to have_content('49')
+        expect(page).to have_content('Partly Cloudy')
       end
     end
   end
