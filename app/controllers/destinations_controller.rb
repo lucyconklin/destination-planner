@@ -4,13 +4,19 @@ class DestinationsController < ApplicationController
   # GET /destinations
   # GET /destinations.json
   def index
-    @destinations = Destination.all
+    respond_to do |format|
+      format.html { @destinations = Destination.all }
+      format.json { @destinations = Destination.all }
+    end
   end
 
   # GET /destinations/1
   # GET /destinations/1.json
   def show
-    @forecasts = WeatherForecast.get_10_day_forecast(@destination.zip)
+    respond_to do |format|
+      format.html { @forecasts = WeatherForecast.get_10_day_forecast(@destination.zip) }
+      format.json { render json: @destination = Destination.find(params[:id]) }
+    end
   end
 
   # GET /destinations/new
@@ -26,7 +32,6 @@ class DestinationsController < ApplicationController
   # POST /destinations.json
   def create
     @destination = Destination.new(destination_params)
-
     respond_to do |format|
       if @destination.save
         format.html { redirect_to @destination, notice: 'Destination was successfully created.' }
