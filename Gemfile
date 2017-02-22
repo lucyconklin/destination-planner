@@ -12,6 +12,7 @@ gem 'faker'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'figaro'
+gem 'faraday'
 
 group :development, :test do
   gem 'byebug', platform: :mri
