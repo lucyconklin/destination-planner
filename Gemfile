@@ -16,6 +16,10 @@ gem 'figaro'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'vcr'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 
 group :development do
