@@ -19,8 +19,20 @@
 
   <div class="row">
     <h4>Forecast for <%= @destination.name %>:</h4>
-    
+
   </div>
+
+  <h1>10 Day Weather Forecast</h1>
+  <% @forecasts.each do |day| %>
+    <div class="day">
+      <p><%= day.weekday %></p>
+      <p><%= day.month %></p>
+      <p><%= day.day %></p>
+      <p><%= day.high_temp %></p>
+      <p><%= day.high_temp %></p>
+      <p><%= day.conditions %></p>
+    </div>
+  <% end %>
 
   <div class="row">
     <%= link_to 'Edit', edit_destination_path(@destination) %> |
