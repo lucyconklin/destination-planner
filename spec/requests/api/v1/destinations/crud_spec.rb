@@ -36,21 +36,31 @@ describe 'Weather API' do
   end
 
   it 'can create a destination' do
-    destination_3 = Destination.create(name: "Denver",
-                                      zip: "8000",
-                                      description: "Mile High City",
-                                      image_url: "/")
+    post "/destinations.json", destination: { name: "Denver",
+                                              zip: "8000",
+                                              description: "Mile High City",
+                                              image_url: "/" }
 
-    post "/destinations.json", destination: destination_3.to_json
-
-    expect(Destination.count).to increase_by(1)
+    expect(Destination.count).to eq(3)
   end
 
-  xit 'can edit a destination' do
+  it 'can edit a destination' do
+    put "/destinations/#{@destination.id}.json", destination: { name: "Twin Falls",
+                                              zip: "9000",
+                                              description: "it's in Idaho",
+                                              image_url: "/" }
+    @destination.reload
 
+    expect(Destination.count).to eq(2)
+    expect(@destination.name).to eq("Twin Falls")
+    expect(@destination.zip).to eq("9000")
+    expect(@destination.description).to eq("it's in Idaho")
+    expect(@destination.image_url).to eq("/")
   end
 
-  xit 'can delete a destination' do
+  it 'can delete a destination' do
+    delete "/destinations/#{@destination.id}.json"
 
+    expect(Destination.count).to eq(1)
   end
 end
